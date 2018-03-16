@@ -3,14 +3,14 @@ package com.transfer.scheduler.model.test;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import org.junit.Assert;
-import org.junit.Before;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.transfer.scheduler.model.Account;
 import com.transfer.scheduler.model.Transfer;
 
-class TransferTest {
+public class TransferTest {
 	
 	
 	Account origin;
@@ -20,8 +20,8 @@ class TransferTest {
 	BigDecimal transferValue;
 	BigDecimal rate;
 	
-	@Before
-	void init() {
+	@BeforeEach
+	public void init() {
 		origin = new Account("012345");
 		destiny = new Account("543210");
 		today = LocalDate.now();
@@ -31,78 +31,78 @@ class TransferTest {
 	}
 	
 	@Test
-	void testConstructorNoArgs() {
+	public void testConstructorNoArgs() {
 		Transfer transfer = new Transfer();
-		Assert.assertNotNull(transfer);
-		Assert.assertNull(transfer.origin());
-		Assert.assertNull(transfer.destiny());
-		Assert.assertNull(transfer.transferValue());
-		Assert.assertNull(transfer.rate());
-		Assert.assertNull(transfer.transferDate());
-		Assert.assertNull(transfer.schedulerDate());
+		Assertions.assertNotNull(transfer);
+		Assertions.assertNull(transfer.origin());
+		Assertions.assertNull(transfer.destiny());
+		Assertions.assertNull(transfer.transferValue());
+		Assertions.assertNull(transfer.rate());
+		Assertions.assertNull(transfer.transferDate());
+		Assertions.assertNull(transfer.schedulerDate());
 
 	}
 	
 	@Test
-	void testConstructorWithArgs() {
+	public void testConstructorWithArgs() {
 		Transfer transfer = new Transfer(origin, destiny, transferValue, rate , today, today);
-		Assert.assertNotNull(transfer);
-		Assert.assertNull(transfer.origin());
-		Assert.assertNull(transfer.destiny());
-		Assert.assertNull(transfer.transferValue());
-		Assert.assertNull(transfer.rate());
-		Assert.assertNull(transfer.transferDate());
-		Assert.assertNull(transfer.schedulerDate());
-		Assert.assertEquals(transfer.origin(), origin);
-		Assert.assertEquals(transfer.destiny(), destiny);
-		Assert.assertEquals(transfer.transferValue(), transferValue);
-		Assert.assertEquals(transfer.rate(), rate);
-		Assert.assertEquals(transfer.transferDate(), today);
-		Assert.assertEquals(transfer.schedulerDate(), today);
+		Assertions.assertNotNull(transfer);
+		Assertions.assertNotNull(transfer.origin());
+		Assertions.assertNotNull(transfer.destiny());
+		Assertions.assertNotNull(transfer.transferValue());
+		Assertions.assertNotNull(transfer.rate());
+		Assertions.assertNotNull(transfer.transferDate());
+		Assertions.assertNotNull(transfer.schedulerDate());
+		Assertions.assertEquals(transfer.origin(), origin);
+		Assertions.assertEquals(transfer.destiny(), destiny);
+		Assertions.assertEquals(transfer.transferValue(), transferValue);
+		Assertions.assertEquals(transfer.rate(), rate);
+		Assertions.assertEquals(transfer.transferDate(), today);
+		Assertions.assertEquals(transfer.schedulerDate(), today);
 
 	}
 	
 	
 	@Test
-	void testChangeOrigin() {
+	public void testChangeOrigin() {
 		Transfer transfer = new Transfer();
 		transfer.origin(destiny);
-		Assert.assertEquals(transfer.origin(), destiny);
+		Assertions.assertEquals(transfer.origin(), destiny);
 	}
 	
 	@Test
-	void testChangeDestiny() {
+	public void testChangeDestiny() {
 		Transfer transfer = new Transfer();
 		transfer.destiny(origin);
-		Assert.assertEquals(transfer.destiny(), origin);
+		Assertions.assertEquals(transfer.destiny(), origin);
 	}
 	
 	@Test
-	void testChangeTransferValue() {
+	public void testChangeTransferValue() {
 		Transfer transfer = new Transfer();
 		transfer.transferValue(rate);
-		Assert.assertEquals(transfer.transferValue(), rate);
+		Assertions.assertEquals(transfer.transferValue(), rate);
 	}
 	
 	@Test
-	void testChangeRate() {
+	public void testChangeRate() {
 		Transfer transfer = new Transfer();
 		transfer.rate(transferValue);
-		Assert.assertEquals(transfer.rate(), transferValue);
+		Assertions.assertEquals(transfer.rate(), transferValue);
 	}
 	
 	@Test
-	void testChangeTransferDate() {
+	public void testChangeTransferDate() {
 		Transfer transfer = new Transfer();
 		transfer.transferDate(tomorrow);
-		Assert.assertEquals(transfer.transferDate(), tomorrow);
+		Assertions.assertEquals(transfer.transferDate(), tomorrow);
 	}
 	
 	@Test
-	void testChangeSchedulerDate() {
+	public void testChangeSchedulerDate() {
 		Transfer transfer = new Transfer();
 		transfer.schedulerDate(tomorrow);
-		Assert.assertEquals(transfer.schedulerDate(), tomorrow);
+		Assertions.assertEquals(transfer.schedulerDate(), tomorrow);
 	}
 
 }
