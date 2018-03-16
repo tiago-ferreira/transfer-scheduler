@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.transfer.scheduler.exceptions.NoRateException;
 import com.transfer.scheduler.model.Transfer;
 import com.transfer.scheduler.service.TransferService;
 
@@ -20,7 +21,7 @@ public class TransferController {
 	private TransferService transferService;
 
 	@PostMapping
-	public Transfer save(@RequestBody Transfer transfer) {
+	public Transfer save(@RequestBody Transfer transfer) throws NoRateException {
 		return transferService.save(transfer);
 	}
 	
