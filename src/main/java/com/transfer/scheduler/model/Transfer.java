@@ -3,10 +3,18 @@ package com.transfer.scheduler.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.deser.std.NumberDeserializers.BigDecimalDeserializer;
+
+@JsonAutoDetect(fieldVisibility = Visibility.ANY, getterVisibility = Visibility.NONE, setterVisibility = Visibility.NONE)
 public class Transfer {
 	private Account origin;
 	private Account destiny;
+	@JsonDeserialize(using=BigDecimalDeserializer.class)
 	private BigDecimal transferValue;
+	@JsonDeserialize(using=BigDecimalDeserializer.class)
 	private BigDecimal rate;
 	private LocalDate transferDate;
 	private LocalDate schedulerDate;
