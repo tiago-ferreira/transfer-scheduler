@@ -83,11 +83,11 @@ class RateCTest {
 		Assertions.assertEquals(result, expected);
 	}
 	
-//	@Test
-//	public void testFortyOneDaysAndValueLessThanOneHundred() {
-//		BigDecimal value = new BigDecimal(50000);
-//		BigDecimal days = new BigDecimal(41);
-//		Assertions.assertThrows(NoRateException.class, () -> rate.calculate(value, days));
-//	}
+	@Test
+	public void testFortyOneDaysAndValueLessThanOneHundred() {
+		BigDecimal value = new BigDecimal(50000);
+		BigDecimal days = new BigDecimal(41);
+		Assertions.assertThrows(NoRateException.class, () -> rate.calculate(value, days));
+	}
 
 }
