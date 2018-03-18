@@ -88,6 +88,12 @@ public class Transfer {
 	}
 
 	@Override
+	public String toString() {
+		return "Transfer [origin=" + origin + ", destiny=" + destiny + ", transferValue=" + transferValue + ", rate="
+				+ rate + ", transferDate=" + transferDate + ", schedulerDate=" + schedulerDate + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

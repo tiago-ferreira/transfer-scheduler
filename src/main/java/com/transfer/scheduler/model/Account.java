@@ -25,6 +25,11 @@ public class Account {
 	}
 
 	@Override
+	public String toString() {
+		return "Account [number=" + number + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
