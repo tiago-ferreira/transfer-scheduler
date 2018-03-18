@@ -13,7 +13,7 @@ import com.transfer.scheduler.model.Transfer;
 @Component
 public class Scheduler {
 
-	@Scheduled(fixedDelay = 150000)
+	@Scheduled(fixedDelay = 600000)
 	public void scheduler() {
 		List<Transfer> transfers = filterTransfersToSchedulerToday();
 		transfers.forEach(System.out::println);
