@@ -1,9 +1,8 @@
 package com.transfer.scheduler.business;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.Period;
+import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,7 @@ public class CalculateRate {
 
 	public BigDecimal applyRate(BigDecimal value, LocalDate schedulerDate, LocalDate transferDate)
 			throws NoRateException {
-		Integer days = daysBetween(schedulerDate, transferDate);
+		Long days = daysBetween(schedulerDate, transferDate);
 		if (schedulerDate.equals(transferDate)) {
 			rateContext.setRateContext(new RateA());
 			return rateContext.calculateRate(value, new BigDecimal(days));
@@ -31,8 +30,8 @@ public class CalculateRate {
 		}
 	}
 
-	private Integer daysBetween(LocalDate schedulerDate, LocalDate transferDate) {
-		return Period.between(schedulerDate, transferDate).getDays();
+	private Long daysBetween(LocalDate schedulerDate, LocalDate transferDate) {
+		return ChronoUnit.DAYS.between(schedulerDate, transferDate);
 	}
 
 }

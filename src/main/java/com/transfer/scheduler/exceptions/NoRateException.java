@@ -13,7 +13,7 @@ public class NoRateException extends Exception{
 	private Integer days;
 	
 	public NoRateException(BigDecimal value, Integer days) {
-		super(String.format("Unable to calculate the rate for the value: $ %s, and the number of days: %d for the transfer ", value.toString(), days));
+		super(String.format("Unable to calculate the rate for the value: $ %s, and the number of days: %d for the transfer.", value.toString(), days));
 		this.value = value;
 		this.days = days;
 	}

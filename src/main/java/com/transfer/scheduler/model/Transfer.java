@@ -86,6 +86,61 @@ public class Transfer {
 		this.schedulerDate = schedulerDate;
 		return this;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((destiny == null) ? 0 : destiny.hashCode());
+		result = prime * result + ((origin == null) ? 0 : origin.hashCode());
+		result = prime * result + ((rate == null) ? 0 : rate.hashCode());
+		result = prime * result + ((schedulerDate == null) ? 0 : schedulerDate.hashCode());
+		result = prime * result + ((transferDate == null) ? 0 : transferDate.hashCode());
+		result = prime * result + ((transferValue == null) ? 0 : transferValue.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Transfer other = (Transfer) obj;
+		if (destiny == null) {
+			if (other.destiny != null)
+				return false;
+		} else if (!destiny.equals(other.destiny))
+			return false;
+		if (origin == null) {
+			if (other.origin != null)
+				return false;
+		} else if (!origin.equals(other.origin))
+			return false;
+		if (rate == null) {
+			if (other.rate != null)
+				return false;
+		} else if (!rate.equals(other.rate))
+			return false;
+		if (schedulerDate == null) {
+			if (other.schedulerDate != null)
+				return false;
+		} else if (!schedulerDate.equals(other.schedulerDate))
+			return false;
+		if (transferDate == null) {
+			if (other.transferDate != null)
+				return false;
+		} else if (!transferDate.equals(other.transferDate))
+			return false;
+		if (transferValue == null) {
+			if (other.transferValue != null)
+				return false;
+		} else if (!transferValue.equals(other.transferValue))
+			return false;
+		return true;
+	}
 	
 	
 

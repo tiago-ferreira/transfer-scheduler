@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.transfer.scheduler.exceptions.NoRateException;
 import com.transfer.scheduler.model.Account;
 import com.transfer.scheduler.model.Transfer;
 import com.transfer.scheduler.service.TransferService;
@@ -39,7 +38,7 @@ public class TransferServiceTest {
 	}
 	
 	@Test
-	public void testSaveAndGetList() throws NoRateException {
+	public void testSaveAndGetList() throws Exception {
 		transferService.save(new Transfer(origin, destiny, transferValue, rate , today, today));
 		Assertions.assertNotNull(transferService.getList());
 	}

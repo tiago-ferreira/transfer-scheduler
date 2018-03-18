@@ -10,7 +10,6 @@ public class TransferDAO {
 	private static List<Transfer> transfers = new LinkedList<>();
 	
 	private TransferDAO() {
-		
 	}
 	
 	public static void save(Transfer transfer) {
@@ -23,5 +22,17 @@ public class TransferDAO {
 	
 	public static int size() {
 		return transfers.size();
+	}
+	
+	public static void clear() {
+		transfers.clear();
+	}
+	
+	public static void remove(Transfer transfer) {
+		transfers.remove(transfer);
+	}
+	
+	public static void removeAll(List<Transfer> transfersToRemove) {
+		transfers.removeAll(transfersToRemove);
 	}
 }
