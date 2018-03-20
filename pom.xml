@@ -74,15 +74,16 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
 		<dependency>
-		    <groupId>org.mockito</groupId>
-		    <artifactId>mockito-core</artifactId>
-		    <scope>test</scope>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -91,12 +92,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<!-- 
-				Due to a memory leak in Surefire 2.20 and issues running on Java 9, 
-				the junit-platform-surefire-provider currently only works with Surefire 2.19.1.
-				
-				see	https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven
-				 -->
+				<!-- Due to a memory leak in Surefire 2.20 and issues running on Java 
+					9, the junit-platform-surefire-provider currently only works with Surefire 
+					2.19.1. see https://junit.org/junit5/docs/current/user-guide/#running-tests-build-maven -->
 				<version>2.19.1</version>
 				<dependencies>
 					<dependency>
@@ -105,6 +103,22 @@
 						<version>${junit-platform.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<imageName>${project.artifactId}</imageName>
+					<dockerDirectory>src/docker</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
