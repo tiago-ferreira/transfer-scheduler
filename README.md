@@ -39,15 +39,19 @@ E a camada responsavel por disponibilizar as servicos Rest.
 
 Entrar no diretório do projeto:
 
-- mvn package
+- mvn clean install package
 - java -jar target/transfer-scheduler-0.0.1-SNAPSHOT.jar
 
-or
+ou
 
 - mvn spring-boot:run
 
 A aplicação irá iniciar em http://localhost:8080
 
+ou
+
+- mvn clean install package docker:build
+- docker run -p 8080:8080 -t transfer-scheduler
 
 ## Servicos para explorar
 
